@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class Main extends javax.swing.JFrame {
     
     private final FuncionarioController funcionarioController;
-    private static final String[] COLUMNS = {"ID", "Tipo de Identificación", "Número de Identificación", "Nombres", "Apellidos", "Estado Civil", "Sexo", "Dirección", "Teléfono"};
+    private static final String[] COLUMNS = {"ID", "Tipo de Identificación", "Número de Identificación", "Nombres", "Apellidos", "Estado Civil", "Sexo", "Dirección", "Teléfono", "Nacimiento"};
     private static final String SELECCIONE = "-- SELECCIONE --";
     /**
      * Creates new form Main
@@ -61,6 +61,7 @@ public class Main extends javax.swing.JFrame {
             defaultTableModel.setValueAt(funcionario.getSexo(), row, 6);
             defaultTableModel.setValueAt(funcionario.getDireccion(), row, 7);
             defaultTableModel.setValueAt(funcionario.getTelefono(), row, 8);
+            defaultTableModel.setValueAt(funcionario.getNacimiento(), row, 9);
             row++;
             cbxFuncionarios.addItem(funcionario);
         }
@@ -79,6 +80,7 @@ public class Main extends javax.swing.JFrame {
                 txtSexoEdit.setText("");
                 txtDireccionEdit.setText("");
                 txtTelefonoEdit.setText("");
+                txtNacimientoEdit.setText("");
             }else{
                 txtIdEdit.setText(String.valueOf(selectedFun.getIdFuncionario()));
                 txtTipoIdentificacionEdit.setText(selectedFun.getTipoIdentificacion());
@@ -89,6 +91,7 @@ public class Main extends javax.swing.JFrame {
                 txtSexoEdit.setText(selectedFun.getSexo());
                 txtDireccionEdit.setText(selectedFun.getDireccion());
                 txtTelefonoEdit.setText(selectedFun.getTelefono());
+                txtNacimientoEdit.setText(selectedFun.getNacimiento());
             }
         });
     }
@@ -123,6 +126,8 @@ public class Main extends javax.swing.JFrame {
         txtDireccion = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
+        lblNacimiento = new javax.swing.JLabel();
+        txtNacimiento = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblFuncionarios = new javax.swing.JTable();
         jPEditar = new javax.swing.JPanel();
@@ -149,14 +154,14 @@ public class Main extends javax.swing.JFrame {
         txtTelefonoEdit = new javax.swing.JTextField();
         btnActualizar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        lblNacimientoEdit = new javax.swing.JLabel();
+        txtNacimientoEdit = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Gestion de Funcionarios");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, -1, -1));
-
-        jPFuncionario.setBorder(javax.swing.BorderFactory.createTitledBorder(null, null));
 
         lblTipoIdentificacion.setText("Tipo de Identificación");
 
@@ -187,6 +192,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        lblNacimiento.setText("Año Nacimiento");
+
         javax.swing.GroupLayout jPFuncionarioLayout = new javax.swing.GroupLayout(jPFuncionario);
         jPFuncionario.setLayout(jPFuncionarioLayout);
         jPFuncionarioLayout.setHorizontalGroup(
@@ -198,7 +205,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(lblSexo)
                 .addGap(185, 185, 185)
                 .addComponent(lblDireccion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
                 .addComponent(lblTelefono)
                 .addGap(101, 101, 101))
             .addGroup(jPFuncionarioLayout.createSequentialGroup()
@@ -219,7 +226,8 @@ public class Main extends javax.swing.JFrame {
                                 .addGap(41, 41, 41)
                                 .addGroup(jPFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtSexo, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                                    .addComponent(txtNumeroIdentificacion))))
+                                    .addComponent(txtNumeroIdentificacion)
+                                    .addComponent(txtNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(jPFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPFuncionarioLayout.createSequentialGroup()
                                 .addGap(117, 117, 117)
@@ -237,10 +245,12 @@ public class Main extends javax.swing.JFrame {
                                     .addComponent(txtApellidos)
                                     .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
                                 .addGap(20, 20, 20))))))
-            .addGroup(jPFuncionarioLayout.createSequentialGroup()
-                .addGap(335, 335, 335)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPFuncionarioLayout.createSequentialGroup()
+                .addGap(118, 118, 118)
+                .addComponent(lblNacimiento)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(159, 159, 159))
         );
         jPFuncionarioLayout.setVerticalGroup(
             jPFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,9 +279,13 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(txtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(86, 86, 86)
-                .addComponent(btnGuardar)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addGroup(jPFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnGuardar)
+                    .addGroup(jPFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblNacimiento)
+                        .addComponent(txtNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(23, 23, 23))
         );
 
         tblFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
@@ -342,77 +356,79 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        lblNacimientoEdit.setText("Año Nacimiento");
+
         javax.swing.GroupLayout jPEditLayout = new javax.swing.GroupLayout(jPEdit);
         jPEdit.setLayout(jPEditLayout);
         jPEditLayout.setHorizontalGroup(
             jPEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPEditLayout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addGroup(jPEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPEditLayout.createSequentialGroup()
-                        .addComponent(lblFuncionariosEdit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblIdEdit)
-                        .addGap(310, 310, 310))
-                    .addGroup(jPEditLayout.createSequentialGroup()
-                        .addGroup(jPEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbxFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPEditLayout.createSequentialGroup()
-                                .addGap(158, 158, 158)
-                                .addComponent(lblNumeroIdentificacionEdit))
-                            .addGroup(jPEditLayout.createSequentialGroup()
-                                .addGap(147, 147, 147)
-                                .addGroup(jPEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtSexoEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNumeroIdentificacionEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(jPEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPEditLayout.createSequentialGroup()
-                                .addGap(157, 157, 157)
-                                .addComponent(txtIdEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPEditLayout.createSequentialGroup()
-                                .addGap(44, 44, 44)
-                                .addGroup(jPEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtDireccionEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                                    .addComponent(txtNombresEdit))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtApellidosEdit)
-                                    .addComponent(txtTelefonoEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
-                                .addGap(27, 27, 27))
-                            .addGroup(jPEditLayout.createSequentialGroup()
-                                .addGap(118, 118, 118)
-                                .addComponent(lblNombresEdit)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblApellidosEdit)
-                                .addGap(110, 110, 110))))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPEditLayout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
-                .addGroup(jPEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtTipoIdentificacionEdit)
-                    .addComponent(txtEstadoCivilEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
-                .addGap(691, 691, 691))
-            .addGroup(jPEditLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(lblEstadoCivlEdit)
-                .addGap(135, 135, 135)
-                .addComponent(lblSexoEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblFuncionariosEdit)
+                .addGap(361, 361, 361)
+                .addComponent(lblIdEdit)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblDireccionEdit)
-                .addGap(173, 173, 173)
-                .addComponent(lblTelefonoEdit)
-                .addGap(104, 104, 104))
+                .addGroup(jPEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTipoIdentificacionEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTipoIdentificacionEdit))
+                .addGap(47, 47, 47))
             .addGroup(jPEditLayout.createSequentialGroup()
+                .addGap(240, 240, 240)
+                .addComponent(btnActualizar)
+                .addGap(134, 134, 134)
+                .addComponent(btnEliminar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPEditLayout.createSequentialGroup()
+                .addContainerGap(44, Short.MAX_VALUE)
+                .addGroup(jPEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPEditLayout.createSequentialGroup()
+                        .addComponent(txtNumeroIdentificacionEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNombresEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPEditLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblNumeroIdentificacionEdit)
+                        .addGap(98, 98, 98)
+                        .addComponent(lblNombresEdit))
+                    .addGroup(jPEditLayout.createSequentialGroup()
+                        .addComponent(txtSexoEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtDireccionEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPEditLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(lblTipoIdentificacionEdit))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtApellidosEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPEditLayout.createSequentialGroup()
-                        .addGap(240, 240, 240)
-                        .addComponent(btnActualizar)
-                        .addGap(134, 134, 134)
-                        .addComponent(btnEliminar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(62, 62, 62)
+                        .addComponent(txtIdEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPEditLayout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(lblApellidosEdit))
+                    .addGroup(jPEditLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(txtTelefonoEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtEstadoCivilEdit)
+                    .addComponent(txtNacimientoEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPEditLayout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(lblSexoEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(138, 138, 138)
+                .addComponent(lblDireccionEdit)
+                .addGroup(jPEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPEditLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblEstadoCivlEdit)
+                        .addGap(87, 87, 87))
+                    .addGroup(jPEditLayout.createSequentialGroup()
+                        .addGap(180, 180, 180)
+                        .addComponent(lblTelefonoEdit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                        .addComponent(lblNacimientoEdit)
+                        .addGap(67, 67, 67))))
         );
         jPEditLayout.setVerticalGroup(
             jPEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -420,35 +436,37 @@ public class Main extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(jPEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFuncionariosEdit)
-                    .addComponent(lblIdEdit))
+                    .addComponent(lblIdEdit)
+                    .addComponent(lblTipoIdentificacionEdit))
                 .addGap(18, 18, 18)
                 .addGroup(jPEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIdEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTipoIdentificacionEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(61, 61, 61)
                 .addGroup(jPEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTipoIdentificacionEdit)
                     .addComponent(lblNumeroIdentificacionEdit)
                     .addComponent(lblNombresEdit)
-                    .addComponent(lblApellidosEdit))
+                    .addComponent(lblApellidosEdit)
+                    .addComponent(lblEstadoCivlEdit))
                 .addGap(18, 18, 18)
                 .addGroup(jPEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTipoIdentificacionEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNumeroIdentificacionEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNombresEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtApellidosEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtApellidosEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEstadoCivilEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addGroup(jPEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEstadoCivlEdit)
                     .addComponent(lblSexoEdit)
                     .addComponent(lblDireccionEdit)
-                    .addComponent(lblTelefonoEdit))
+                    .addComponent(lblTelefonoEdit)
+                    .addComponent(lblNacimientoEdit))
                 .addGap(27, 27, 27)
                 .addGroup(jPEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEstadoCivilEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSexoEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDireccionEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTelefonoEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTelefonoEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNacimientoEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(jPEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnActualizar)
@@ -488,7 +506,7 @@ public class Main extends javax.swing.JFrame {
         
         if(txtTipoIdentificacion.getText().trim().length() == 0 || txtNumeroIdentificacion.getText().trim().length() == 0 ||
                 txtNombres.getText().trim().length() == 0 || txtApellidos.getText().trim().length() == 0 || txtEstadoCivil.getText().trim().length() == 0 ||
-                txtSexo.getText().trim().length() == 0 || txtDireccion.getText().trim().length() == 0 || txtTelefono.getText().trim().length() == 0){
+                txtSexo.getText().trim().length() == 0 || txtDireccion.getText().trim().length() == 0 || txtTelefono.getText().trim().length() == 0 || txtNacimiento.getText().trim().length() == 0){
             JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios");
             return;
         }
@@ -502,6 +520,7 @@ public class Main extends javax.swing.JFrame {
         funcionario.setSexo(txtSexo.getText().trim());
         funcionario.setDireccion(txtDireccion.getText().trim());
         funcionario.setTelefono(txtTelefono.getText().trim());
+        funcionario.setNacimiento(txtNacimiento.getText().trim());
         
         funcionarioController.create(funcionario);
         txtNumeroIdentificacion.setText("");
@@ -511,6 +530,7 @@ public class Main extends javax.swing.JFrame {
         txtSexo.setText("");
         txtDireccion.setText("");
         txtTelefono.setText("");
+        txtNacimiento.setText("");
         listFuncionarios();
         JOptionPane.showMessageDialog(null, "Funcionario creado con exito");
         
@@ -520,7 +540,7 @@ public class Main extends javax.swing.JFrame {
         
         if(txtIdEdit.getText().trim().length() == 0 || txtTipoIdentificacionEdit.getText().trim().length() == 0 || txtNumeroIdentificacionEdit.getText().trim().length() == 0 ||
                 txtNombresEdit.getText().trim().length() == 0 || txtApellidosEdit.getText().trim().length() == 0 || txtEstadoCivilEdit.getText().trim().length() == 0 ||
-                txtSexoEdit.getText().trim().length() == 0 || txtDireccionEdit.getText().trim().length() == 0 || txtTelefonoEdit.getText().trim().length() == 0){
+                txtSexoEdit.getText().trim().length() == 0 || txtDireccionEdit.getText().trim().length() == 0 || txtTelefonoEdit.getText().trim().length() == 0 || txtNacimientoEdit.getText().trim().length() == 0){
             JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios");
             return;
         }
@@ -535,6 +555,7 @@ public class Main extends javax.swing.JFrame {
         funcionario.setSexo(txtSexoEdit.getText().trim());
         funcionario.setDireccion(txtDireccionEdit.getText().trim());
         funcionario.setTelefono(txtTelefonoEdit.getText().trim());
+        funcionario.setNacimiento(txtNacimientoEdit.getText().trim());
         
         int opt = JOptionPane.showConfirmDialog(null, "Desea actualizar el Funcionario", "Confirmar salida",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -549,6 +570,7 @@ public class Main extends javax.swing.JFrame {
             txtSexoEdit.setText("");
             txtDireccionEdit.setText("");
             txtTelefonoEdit.setText("");
+            txtNacimientoEdit.setText("");
             listFuncionarios();
             JOptionPane.showMessageDialog(null, "Funcionario creado con exito");
         }
@@ -574,6 +596,7 @@ public class Main extends javax.swing.JFrame {
             txtSexoEdit.setText("");
             txtDireccionEdit.setText("");
             txtTelefonoEdit.setText("");
+            txtNacimientoEdit.setText("");
             listFuncionarios();
             JOptionPane.showMessageDialog(null, "Funcionario eliminado con exito");
         }
@@ -634,6 +657,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lblEstadoCivlEdit;
     private javax.swing.JLabel lblFuncionariosEdit;
     private javax.swing.JLabel lblIdEdit;
+    private javax.swing.JLabel lblNacimiento;
+    private javax.swing.JLabel lblNacimientoEdit;
     private javax.swing.JLabel lblNombres;
     private javax.swing.JLabel lblNombresEdit;
     private javax.swing.JLabel lblNumeroIdentificacion;
@@ -652,6 +677,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtEstadoCivil;
     private javax.swing.JTextField txtEstadoCivilEdit;
     private javax.swing.JTextField txtIdEdit;
+    private javax.swing.JTextField txtNacimiento;
+    private javax.swing.JTextField txtNacimientoEdit;
     private javax.swing.JTextField txtNombres;
     private javax.swing.JTextField txtNombresEdit;
     private javax.swing.JTextField txtNumeroIdentificacion;

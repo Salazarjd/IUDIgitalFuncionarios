@@ -11,6 +11,7 @@ public class Funcionario {
     private String sexo;
     private String direccion;
     private String telefono;
+    private String nacimiento;
 
     public Funcionario() {
     }
@@ -19,7 +20,7 @@ public class Funcionario {
         this.idFuncionario = idFuncionario;
     }
 
-    public Funcionario(String tipoIdentificacion, String numeroIdentificacion, String nombres, String apellidos, String estadoCivil, String sexo, String direccion, String telefono) {
+    public Funcionario(String tipoIdentificacion, String numeroIdentificacion, String nombres, String apellidos, String estadoCivil, String sexo, String direccion, String telefono, String nacimiento) {
         this.tipoIdentificacion = tipoIdentificacion;
         this.numeroIdentificacion = numeroIdentificacion;
         this.nombres = nombres;
@@ -28,9 +29,10 @@ public class Funcionario {
         this.sexo = sexo;
         this.direccion = direccion;
         this.telefono = telefono;
+        this.nacimiento = nacimiento;
     }
 
-    public Funcionario(int idFuncionario, String tipoIdentificacion, String numeroIdentificacion, String nombres, String apellidos, String estadoCivil, String sexo, String direccion, String telefono) {
+    public Funcionario(int idFuncionario, String tipoIdentificacion, String numeroIdentificacion, String nombres, String apellidos, String estadoCivil, String sexo, String direccion, String telefono, String nacimiento) {
         this.idFuncionario = idFuncionario;
         this.tipoIdentificacion = tipoIdentificacion;
         this.numeroIdentificacion = numeroIdentificacion;
@@ -40,6 +42,7 @@ public class Funcionario {
         this.sexo = sexo;
         this.direccion = direccion;
         this.telefono = telefono;
+        this.nacimiento = nacimiento;
     }
 
     public int getIdFuncionario() {
@@ -112,6 +115,14 @@ public class Funcionario {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+    
+    public String getNacimiento(){
+        return this.nacimiento;
+    }
+    
+    public void setNacimiento(String nacimiento){
+        this.nacimiento = nacimiento;
     }
 
     @Override

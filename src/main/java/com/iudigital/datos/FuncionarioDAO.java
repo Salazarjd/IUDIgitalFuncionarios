@@ -12,17 +12,17 @@ import java.util.List;
 public class FuncionarioDAO {
 
     private static final String SELECT = "SELECT funcionarios.id_funcionario, funcionarios.tipo_identificacion, funcionarios.numero_identificacion, funcionarios.nombres, funcionarios.apellidos," +
-            "funcionarios.direccion, funcionarios.telefono, estado.nombre, sexo.nombre FROM funcionarios " +
+            "estado.nombre, sexo.nombre, funcionarios.direccion, funcionarios.telefono, funcionarios.nacimiento  FROM funcionarios " +
             "INNER JOIN estado ON funcionarios.estado_civil = estado.id_estado " +
             "INNER JOIN sexo ON funcionarios.sexo = sexo.id_sexo";
 
     private static final String SELECT_BY_ID = "SELECT funcionarios.id_funcionario, funcionarios.tipo_identificacion, funcionarios.numero_identificacion, funcionarios.nombres, funcionarios.apellidos," +
-            "funcionarios.direccion, funcionarios.telefono, estado.nombre, sexo.nombre FROM funcionarios " +
+            "estado.nombre, sexo.nombre, funcionarios.direccion, funcionarios.telefono, funcionarios.nacimiento  FROM funcionarios " +
             "INNER JOIN estado ON funcionarios.estado_civil = estado.id_estado " +
             "INNER JOIN sexo ON funcionarios.sexo = sexo.id_sexo WHERE id_funcionario = ?";
-    private static final String SQL_INSERT = "INSERT INTO funcionarios(tipo_identificacion, numero_identificacion, nombres, apellidos, estado_civil, sexo, direccion, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String SQL_INSERT = "INSERT INTO funcionarios(tipo_identificacion, numero_identificacion, nombres, apellidos, estado_civil, sexo, direccion, telefono, nacimiento) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    private static final String SQL_UPDATE = "UPDATE funcionarios SET tipo_identificacion = ?, numero_identificacion = ?, nombres = ?, apellidos = ?, estado_civil = ?, sexo = ?, direccion = ?, telefono = ? WHERE id_funcionario = ?";
+    private static final String SQL_UPDATE = "UPDATE funcionarios SET tipo_identificacion = ?, numero_identificacion = ?, nombres = ?, apellidos = ?, estado_civil = ?, sexo = ?, direccion = ?, telefono = ?, nacimiento = ? WHERE id_funcionario = ?";
 
     private static final String SQL_DELETE = "DELETE FROM funcionarios WHERE id_funcionario = ?";
 
@@ -48,7 +48,8 @@ public class FuncionarioDAO {
                 String sexo = rs.getString("sexo.nombre");
                 String direccion = rs.getString("direccion");
                 String telefono = rs.getString("telefono");
-                funcionario = new Funcionario(idFuncionario,tipoIdentificacion,numeroIdentificacion,nombres,apellidos,estadoCivil,sexo,direccion,telefono);
+                String nacimiento = rs.getString("nacimiento");
+                funcionario = new Funcionario(idFuncionario,tipoIdentificacion,numeroIdentificacion,nombres,apellidos,estadoCivil,sexo,direccion,telefono,nacimiento);
                 funcionarios.add(funcionario);
             }
         } catch (SQLException e) {
@@ -87,7 +88,8 @@ public class FuncionarioDAO {
                 String sexo = rs.getString("sexo.nombre");
                 String direccion = rs.getString("direccion");
                 String telefono = rs.getString("telefono");
-                funcionario = new Funcionario(idFuncionario,tipoIdentificacion,numeroIdentificacion,nombres,apellidos,estadoCivil,sexo,direccion,telefono);
+                String nacimiento = rs.getString("nacimiento");
+                funcionario = new Funcionario(idFuncionario,tipoIdentificacion,numeroIdentificacion,nombres,apellidos,estadoCivil,sexo,direccion,telefono,nacimiento);
 
             }
         } catch (SQLException e) {
@@ -135,6 +137,7 @@ public class FuncionarioDAO {
             stmt.setInt(6, sexo);
             stmt.setString(7, funcionario.getDireccion());
             stmt.setString(8, funcionario.getTelefono());
+            stmt.setString(9, funcionario.getNacimiento());
             registros = stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace(System.out);
@@ -182,7 +185,8 @@ public class FuncionarioDAO {
             stmt.setInt(6, sexo);
             stmt.setString(7, funcionario.getDireccion());
             stmt.setString(8, funcionario.getTelefono());
-            stmt.setInt(9, funcionario.getIdFuncionario());
+            stmt.setString(9, funcionario.getNacimiento());
+            stmt.setInt(10, funcionario.getIdFuncionario());
             registros = stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace(System.out);

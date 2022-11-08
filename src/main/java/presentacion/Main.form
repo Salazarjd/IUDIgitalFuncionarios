@@ -82,15 +82,6 @@
           </Layout>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="jPFuncionario">
-              <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="">
-                      <Value PropertyName="innerBorder" id=""/>
-                    </TitledBorder>
-                  </Border>
-                </Property>
-              </Properties>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -102,7 +93,7 @@
                           <Component id="lblSexo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
                           <Component id="lblDireccion" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="174" max="32767" attributes="0"/>
+                          <EmptySpace pref="176" max="32767" attributes="0"/>
                           <Component id="lblTelefono" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
                       </Group>
@@ -128,6 +119,7 @@
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="txtSexo" pref="138" max="32767" attributes="0"/>
                                               <Component id="txtNumeroIdentificacion" max="32767" attributes="0"/>
+                                              <Component id="txtNacimiento" alignment="0" min="-2" pref="88" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -156,10 +148,12 @@
                               </Group>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="335" max="-2" attributes="0"/>
-                          <Component id="btnGuardar" min="-2" pref="136" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
+                          <Component id="lblNacimiento" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btnGuardar" min="-2" pref="136" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -194,9 +188,15 @@
                               <Component id="txtDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
-                          <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="18" max="32767" attributes="0"/>
+                          <EmptySpace pref="81" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblNacimiento" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNacimiento" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -269,6 +269,13 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarActionPerformed"/>
                   </Events>
                 </Component>
+                <Component class="javax.swing.JLabel" name="lblNacimiento">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="A&#xf1;o Nacimiento"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtNacimiento">
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -326,91 +333,88 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblFuncionariosEdit" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="lblIdEdit" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="310" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cbxFuncionarios" min="-2" pref="207" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
-                                          <Component id="lblNumeroIdentificacionEdit" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txtSexoEdit" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
-                                              <Component id="txtNumeroIdentificacionEdit" min="-2" pref="158" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
-                                          <Component id="txtIdEdit" min="-2" pref="64" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtDireccionEdit" pref="201" max="32767" attributes="0"/>
-                                              <Component id="txtNombresEdit" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtApellidosEdit" max="32767" attributes="0"/>
-                                              <Component id="txtTelefonoEdit" pref="192" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
-                                          <Component id="lblNombresEdit" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="lblApellidosEdit" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="31" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtTipoIdentificacionEdit" max="32767" attributes="0"/>
-                              <Component id="txtEstadoCivilEdit" pref="134" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="691" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                          <Component id="lblEstadoCivlEdit" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
-                          <Component id="lblSexoEdit" min="-2" pref="39" max="-2" attributes="0"/>
+                          <Component id="lblFuncionariosEdit" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="361" max="-2" attributes="0"/>
+                          <Component id="lblIdEdit" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="lblDireccionEdit" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
-                          <Component id="lblTelefonoEdit" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtTipoIdentificacionEdit" min="-2" pref="134" max="-2" attributes="0"/>
+                              <Component id="lblTipoIdentificacionEdit" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="240" max="-2" attributes="0"/>
+                          <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
+                          <Component id="btnEliminar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="44" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                  <Component id="lblTipoIdentificacionEdit" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxFuncionarios" min="-2" pref="207" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtNumeroIdentificacionEdit" min="-2" pref="158" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="txtNombresEdit" min="-2" pref="201" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="240" max="-2" attributes="0"/>
-                                  <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
-                                  <Component id="btnEliminar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                  <Component id="lblNumeroIdentificacionEdit" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+                                  <Component id="lblNombresEdit" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="txtSexoEdit" min="-2" pref="158" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="txtDireccionEdit" min="-2" pref="201" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="txtApellidosEdit" min="-2" pref="192" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                                  <Component id="txtIdEdit" min="-2" pref="64" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                                  <Component id="lblApellidosEdit" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="txtTelefonoEdit" min="-2" pref="192" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtEstadoCivilEdit" max="32767" attributes="0"/>
+                              <Component id="txtNacimientoEdit" pref="166" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="lblSexoEdit" min="-2" pref="39" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
+                          <Component id="lblDireccionEdit" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="lblEstadoCivlEdit" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
+                                  <Component id="lblTelefonoEdit" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="145" max="32767" attributes="0"/>
+                                  <Component id="lblNacimientoEdit" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -421,39 +425,41 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblFuncionariosEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblIdEdit" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTipoIdentificacionEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="cbxFuncionarios" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtIdEdit" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtTipoIdentificacionEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblTipoIdentificacionEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblNumeroIdentificacionEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblNombresEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblApellidosEdit" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblEstadoCivlEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtTipoIdentificacionEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtNumeroIdentificacionEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtNombresEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtApellidosEdit" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtEstadoCivilEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblEstadoCivlEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblSexoEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblDireccionEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblTelefonoEdit" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNacimientoEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtEstadoCivilEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtSexoEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtDireccionEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtTelefonoEdit" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNacimientoEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="75" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -559,6 +565,13 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblNacimientoEdit">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="A&#xf1;o Nacimiento"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtNacimientoEdit">
                 </Component>
               </SubComponents>
             </Container>
